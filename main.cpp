@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 				{
 					if(score==levelTimeStamps[level])
 					{
-						enemies.push_back(std::make_shared<BasicEnemy>((float)(mt()%199+1)/100-1, (float)(mt()%199+1)/100-1, rfloat(mt)/80+0.0125, rfloat(mt)/80+0.0125));
+						enemies.push_back(std::make_shared<BasicEnemy>((float)(mt()%199+1)/150-0.5, (float)(mt()%199+1)/150-0.5, rfloat(mt)/80+0.0125, rfloat(mt)/80+0.0125));
 						std::cout<<enemies.size()<<std::endl;
 						if(level+1<levelTimeStamps.size())
 							++level;
@@ -44,7 +44,10 @@ int main(int argc, char **argv)
 						hpacks.push_back(std::make_shared<HealthPack>((float)(mt()%199+1)/100-1, (float)(mt()%199+1)/100-1, mt()%121+120));
 
 					glClear(GL_COLOR_BUFFER_BIT);
-					glColor3ub(255, 0, 255);
+					if(player[4] != 0)
+						glColor3ub(255, 0, 255);
+					else
+						glColor3ub(97, 97, 97);
 					FillRect(-1, -1, 2, 2);
 					glColor3ub(0, 255, 0);
 					FillRect(player[0] - 5.0 / 128, player[1] - 5.0 / 128, 5.0 / 64, 5.0 / 64);
